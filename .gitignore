@@ -15,3 +15,10 @@ add_token.js
 build_index.js
 test_query.js
 list_all_tools.js
+*.js
+!next.config.js
+!tailwind.config.js
+!postcss.config.js
+!scripts/**
+!components/**
+!app/**
