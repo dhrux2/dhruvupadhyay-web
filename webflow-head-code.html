@@ -1,11 +1,84 @@
 <!-- WEBFLOW PAGE SETTINGS: INSIDE <head> CODE -->
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+/* --- BESPOKE TYPOGRAPHY: HARMOND SERIF & NOHEMI --- */
+@font-face {
+  font-family: 'Harmond';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/harmond-serif-font-family/harmond-extbditaexp.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Harmond';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/harmond-serif-font-family/harmond-extraboldexpanded.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Harmond';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/harmond-serif-font-family/harmond-sembditacond.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Harmond';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/harmond-serif-font-family/harmond-semiboldcondensed.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/Nohemi/Web-TT/Nohemi-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/Nohemi/Web-TT/Nohemi-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/Nohemi/Web-TT/Nohemi-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/Nohemi/Web-TT/Nohemi-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/Nohemi/Web-TT/Nohemi-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Harmond', 'Instrument Serif', Georgia, serif;
+  --font-body: 'Nohemi', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   
   --color-parchment: #E8E2D6;
@@ -64,7 +137,17 @@ body { position: relative; min-height: 100vh; background-color: var(--bg-current
 .site-header.is-scrolled { padding: 1.15rem 3.5rem; border-bottom-color: var(--border-current); background-color: rgba(232, 226, 214, 0.75); }
 [data-theme="dark"] .site-header.is-scrolled { background-color: rgba(14, 18, 25, 0.8); }
 .nav-brand { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--text-current); }
-.nav-monogram { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-current); background-color: var(--card-current); display: flex; align-items: center; justify-content: center; }
+.nav-monogram { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-current); background-color: var(--card-current); overflow: hidden; position: relative; transition: transform 0.4s var(--ease-out-expo), border-color 0.4s, box-shadow 0.4s; }
+.nav-brand-logo-img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%; transition: filter 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo); }
+[data-theme="light"] .nav-brand-logo-img { filter: invert(1); }
+[data-theme="dark"] .nav-brand-logo-img { filter: invert(0); }
+.nav-brand:hover .nav-monogram { transform: rotate(-8deg) scale(1.08); border-color: var(--color-steel); box-shadow: 0 0 16px var(--color-steel-glow); }
+.footer-brand-mark { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 2.5rem; }
+.footer-logo-img { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--color-navy-border); object-fit: cover; display: block; transition: transform 0.4s var(--ease-out-expo), border-color 0.4s; }
+.footer-brand-mark:hover .footer-logo-img { transform: rotate(8deg) scale(1.08); border-color: var(--color-steel-light); }
+.footer-brand-details { display: flex; flex-direction: column; }
+.footer-brand-name { font-family: var(--font-body); font-weight: 700; font-size: 1.15rem; color: var(--color-navy-text); letter-spacing: -0.01em; }
+.footer-brand-sub { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-steel-light); letter-spacing: 0.08em; text-transform: uppercase; }
 .nav-title-group { display: flex; flex-direction: column; }
 .nav-name { font-weight: 600; font-size: 0.95rem; }
 .nav-role { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted-current); letter-spacing: 0.05em; text-transform: uppercase; }

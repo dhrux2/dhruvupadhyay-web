@@ -7,12 +7,85 @@
   <meta name="description" content="Awwwards-calibre portfolio of Dhruv Upadhyay. Full-stack and mobile developer specializing in high-fidelity mobile runtimes and editorial web experiences.">
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+/* --- BESPOKE TYPOGRAPHY: HARMOND SERIF & NOHEMI --- */
+@font-face {
+  font-family: 'Harmond';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/harmond-serif-font-family/harmond-extbditaexp.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Harmond';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/harmond-serif-font-family/harmond-extraboldexpanded.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Harmond';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/harmond-serif-font-family/harmond-sembditacond.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Harmond';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/harmond-serif-font-family/harmond-semiboldcondensed.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/Nohemi/Web-TT/Nohemi-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/Nohemi/Web-TT/Nohemi-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/Nohemi/Web-TT/Nohemi-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/Nohemi/Web-TT/Nohemi-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/fonts/Nohemi/Web-TT/Nohemi-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 /* --- DESIGN TOKENS & SYSTEM VARIABLES --- */
 :root {
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Harmond', 'Instrument Serif', Georgia, serif;
+  --font-body: 'Nohemi', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
   
   --color-parchment: #E8E2D6;
@@ -227,10 +300,6 @@ body {
 }
 
 .nav-monogram {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -239,12 +308,32 @@ body {
   border-radius: 50%;
   border: 1px solid var(--border-current);
   background-color: var(--card-current);
-  transition: transform 0.4s var(--ease-out-expo), border-color 0.4s;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.4s var(--ease-out-expo), border-color 0.4s, box-shadow 0.4s;
+}
+
+.nav-brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  transition: filter 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo);
+}
+
+[data-theme="light"] .nav-brand-logo-img {
+  filter: invert(1);
+}
+
+[data-theme="dark"] .nav-brand-logo-img {
+  filter: invert(0);
 }
 
 .nav-brand:hover .nav-monogram {
-  transform: rotate(-8deg) scale(1.05);
+  transform: rotate(-8deg) scale(1.08);
   border-color: var(--color-steel);
+  box-shadow: 0 0 16px var(--color-steel-glow);
 }
 
 .nav-title-group {
@@ -821,6 +910,49 @@ body {
   min-height: 60vh;
 }
 
+.footer-brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-logo-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--color-navy-border);
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s var(--ease-out-expo), border-color 0.4s;
+}
+
+.footer-brand-mark:hover .footer-logo-img {
+  transform: rotate(8deg) scale(1.08);
+  border-color: var(--color-steel-light);
+}
+
+.footer-brand-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-brand-name {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-navy-text);
+  letter-spacing: -0.01em;
+}
+
+.footer-brand-sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-steel-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .footer-invitation-lead {
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -951,7 +1083,9 @@ body {
 <!-- SITE HEADER -->
 <header class="site-header">
   <a href="/" class="nav-brand" data-cursor-text="HOME">
-    <div class="nav-monogram">DU</div>
+    <div class="nav-monogram">
+      <img src="https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/logo/logo.png" alt="Dhruv Upadhyay" class="nav-brand-logo-img" />
+    </div>
     <div class="nav-title-group">
       <span class="nav-name">Dhruv Upadhyay</span>
       <span class="nav-role">Full-Stack & Mobile</span>
@@ -1223,6 +1357,13 @@ body {
   <footer id="contact" class="section-footer">
     <div class="footer-inner">
       <div>
+        <div class="footer-brand-mark">
+          <img src="https://cdn.jsdelivr.net/gh/dhrux2/dhruvupadhyay-web@main/logo/logo.png" alt="Dhruv Upadhyay" class="footer-logo-img" />
+          <div class="footer-brand-details">
+            <span class="footer-brand-name">Dhruv Upadhyay</span>
+            <span class="footer-brand-sub">Full-Stack & Native Mobile Engineer</span>
+          </div>
+        </div>
         <div class="footer-invitation-lead">Direct Collaboration</div>
         <h2 class="footer-huge-cta">
           Let’s engineer something <span class="serif-italic">extraordinary.</span>
